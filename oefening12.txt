@@ -1,0 +1,12 @@
+ga naar Ensembl website
+zoek rs4224828 en stel organisme in op muis.
+Er is een tabblad met de locatie: Chromosome 4: 136,443,449-136,444,449
+
+
+Ensembl homepage
+zoek rs4224828 en zoek MYCN
+links: restrict category to gene en kies eerste link.
+links: klik op sequence
+
+GGCAGAGTTGAGTCGGTGATGATATGCGGATCGGCCGTTACCTCACTGACCTGAACAATG
+AGGAGAGATGCTGCTGACTCGCTCTGATTCATTCACAGCACACTTCGTCGTGTTTTACTG
