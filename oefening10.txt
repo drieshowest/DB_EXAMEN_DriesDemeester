@@ -1,0 +1,38 @@
+SELECT gene_name, (seq_region_end - seq_region_start +1) as length FROM gene ORDER BY length desc LIMIT 1;
+
++-----------+---------+
+| gene_name | length  |
++-----------+---------+
+| TMPRSS3   | 5379014 |
++-----------+---------+
+
+
+SELECT gene_name, count(transcript.transcript_id) as number_of_transcripts FROM gene JOIN transcript ON transcript.gene_id = gene.gene_id GROUP BY gene_name ORDER BY number_of_transcripts desc LIMIT 1;
+
++-----------+-----------------------+
+| gene_name | number_of_transcripts |
++-----------+-----------------------+
+| U6        |                  1329 |
++-----------+-----------------------+
+
+
+
+SELECT chromosome, count(DISTINCT( gene_name)) as number_genes_cancer, count(exon.exon_id) as number_exons FROM gene JOIN transcript ON transcript.gene_id = gene.gene_id JOIN exon_transcript ON transcript.transcript_id = exon_transcript.transcript_id JOIN exon ON exon.exon_id = exon_transcript.exon_id WHERE gene.description like "%cancer%"  GROUP BY chromosome ORDER BY number_genes_cancer desc LIMIT 1 OFFSET 1;
+
++------------+---------------------+--------------+
+| chromosome | number_genes_cancer | number_exons |
++------------+---------------------+--------------+
+| 9          |                   5 |          170 |
++------------+---------------------+--------------+
+
+
+
+SELECT count(DISTINCT(exon.exon_id)), count(exon_transcript.exon_id) FROM exon JOIN exon_transcript ON exon.exon_id = exon_transcript.exon_id;
+
++-------------------------------+--------------------------------+
+| count(DISTINCT(exon.exon_id)) | count(exon_transcript.exon_id) |
++-------------------------------+--------------------------------+
+|                        642590 |                        1178393 |
++-------------------------------+--------------------------------+
+
+	Het vershil valt te verklaren omdat er meerdere transcripten kunnen zijn van 1 exon.
