@@ -1,0 +1,18 @@
+1NF: 
+	personeel(Personeelnummer, naam, geboortedatum, labocode, labonaam, projectcode, projectomschrijving, projectsupervisor)
+
+2NF:
+	personeel( PERSONEELNUMMER, naam, geboortedatum)
+	labo( LABOCODE, labonaam)	
+	project( projectcode, projectomschrijving, projectsupervisor)
+
+
+3NF: 
+	personeel(PERSONEELNUMMER, naam, geboortedatum)
+	labo(LABOCODE, labonaam, PROJECTCODE)
+	project(PROJECTCODE, projectomschrijving, PROJECTSUPERVISOR)
+	personeel-project(ID, PERSONEELNUMMER, PROJECTCODE)
+	
+
+
+opm: de attributen in hoofdletters zijn sleutel-attributen.
